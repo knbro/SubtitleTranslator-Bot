@@ -162,66 +162,34 @@ def data(client, callback_query):
             update(message.chat.id, counts, "waiting")
             process_failed = False
             try:
-                with io.open(subdir, "r", encoding="utf-8") as file:
-                    try:
-                        subtitle = file.readlines()
-                    except Exception:
-                        tr.edit(err4)
-                        update(message.chat.id, counts, "free")
-
-                    subtitle[0] = "1\n"
-                    with io.open(outfile, "w", encoding="utf-8") as f:
-                        total = len(subtitle)
-                        done = 0
-
-                        for i in range(total):
-                            diff = time.time() - then
-                            if subtitle[i][0].isdigit():
-                                f.write("\n" + subtitle[i])
-                                done += 1
-                            else:
-                                try:
-                                    receive = translator.translate(
-                                        subtitle[i], dest=lang
-                                    )
-                                    f.write(receive.text + "\n")
-                                    done += 1
-                                except Exception:
-                                    pass
-
-                            speed = done / diff
-                            percentage = round(done * 100 / total, 2)
-                            eta = format_time(int((total - done) / speed))
-                            if done % 20 == 0:
-                                try:
-                                    tr.edit(
-                                        text=eta_text.format(
-                                            message.document.file_name,
-                                            done,
-                                            total,
-                                            percentage,
-                                            round(speed),
-                                            eta,
-                                            "".join(
-                                                [
-                                                    "▓"
-                                                    for i in range(
-                                                        math.floor(percentage / 7)
-                                                    )
-                                                ]
-                                            ),
-                                            "".join(
-                                                [
-                                                    "░"
-                                                    for i in range(
-                                                        14 - math.floor(percentage / 7)
-                                                    )
-                                                ]
-                                            ),
-                                        )
-                                    )
-                                except Exception:
-                                    pass
+                sub = open(subdir, "r")
+                org_sub_list = list(srt.parse(sub, "ignore_errors"))
+                src_text_list = []
+                dest_text_list = []
+                i = 0
+                for subtitle  in org_sub_list:
+                    i += 1
+                    text_to_translate = subtitle.content.replace("\n", " ")
+                    
+                    src_text_list.append(text_to_translate)
+                pieces = 23
+                new_arrays = np.array_split(src_text_list, pieces)
+                joint_text_list = []
+                for item in new_arrays:
+                    joint_text_list.append("\n".join(item.tolist()))
+                joint_translated_list = translator.translate(joint_text_list,dest=lang)
+                translated_sub_list_list = []
+                for item in joint_translated_list:
+                    text_of_item = item.text
+                    translated_sub_list_list.append(text_of_item.split("\n"))
+                translated_sub_list = []
+                for i in translated_sub_list_list:
+                    for j in i:
+                        translated_sub_list.append(j)
+                for translation,srt_object in zip(translated_sub_list ,org_sub_list):
+                    srt_object.content = translation
+                new_sub = open(f"{outfile}","w", encoding="utf-8")
+                new_sub.write(srt.compose(org_sub_list))
             except Exception:
                 tr.edit(err5)
                 counts -= 1
