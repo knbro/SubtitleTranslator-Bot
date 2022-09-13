@@ -68,7 +68,7 @@ def start(client, message):
 def abouts(client, message):
     client.send_message(
         chat_id=message.chat.id,
-        reply_to_message_id=message.message_id,
+        reply_to_message_id=message.id,
         text=about,
         disable_web_page_preview=True,
         reply_markup=InlineKeyboardMarkup(
