@@ -192,7 +192,7 @@ def data(client, callback_query):
                 new_sub.write(srt.compose(org_sub_list))
             except Exception as e:
                 print(e)
-                tr.edit(err5)
+                tr.edit(e)
                 counts -= 1
                 update(message.chat.id, counts, "free")
                 process_failed = True
