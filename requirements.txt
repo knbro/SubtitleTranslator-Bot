@@ -9,4 +9,3 @@ python-jwt
 requests-toolbelt
 sseclient
 pytz
-urllib
