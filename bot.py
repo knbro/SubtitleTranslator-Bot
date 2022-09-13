@@ -44,57 +44,57 @@ app = Client(
 
 
 @app.on_message(filters.command(["start"]))
-async def start(client, message):
-        client.send_message(
-            hat_id=message.chat.id,
-            text=f"`Hi` **{message.from_user.first_name}**\n{welcome}",
-            reply_markup=InlineKeyboardMarkup(
+def start(client, message):
+    client.send_message(
+        chat_id=message.chat.id,
+        text=f"`Hi` **{message.from_user.first_name}**\n{welcome}",
+        reply_markup=InlineKeyboardMarkup(
+            [
                 [
-                    [
-                        InlineKeyboardButton("About", callback_data="about"),
-                        InlineKeyboardButton("Help", callback_data="help"),
-                    ]
+                    InlineKeyboardButton("About", callback_data="about"),
+                    InlineKeyboardButton("Help", callback_data="help"),
                 ]
-            ),
-        )
-        check_udate = dt(message.chat.id)
-        if check_udate is None:
-            update(message.chat.id, 0, "free")
-        if not today_date == check_udate:
-            update(message.chat.id, 0, "free")
+            ]
+        ),
+    )
+    check_udate = dt(message.chat.id)
+    if check_udate is None:
+        update(message.chat.id, 0, "free")
+    if not today_date == check_udate:
+        update(message.chat.id, 0, "free")
 
 
 @app.on_message(filters.command(["about"]))
-async def abouts(client, message):
-        client.send_message(
-            chat_id=message.chat.id,
-            reply_to_message_id=message.message_id,
-            text=about,
-            disable_web_page_preview=True,
-            reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton("Updates Channel", url="t.me/HYBRID_Bots")]]
-            ),
-        )
+def abouts(client, message):
+    client.send_message(
+        chat_id=message.chat.id,
+        reply_to_message_id=message.message_id,
+        text=about,
+        disable_web_page_preview=True,
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("Updates Channel", url="t.me/HYBRID_Bots")]]
+        ),
+    )
 
 
 @app.on_message(filters.command(["log"]))
-async def stats(client, message):
-        stat = client.send_message(
-            chat_id=message.chat.id,
-            reply_to_message_id=message.message_id,
-            text="`Fetching details`",
-        )
-        txt = logreturn()
-        stat.edit(txt)
+def stats(client, message):
+    stat = client.send_message(
+        chat_id=message.chat.id,
+        reply_to_message_id=message.message_id,
+        text="`Fetching details`",
+    )
+    txt = logreturn()
+    stat.edit(txt)
 
 
 @app.on_message(filters.text)
-async def texts(client, message):
+def texts(client, message):
     message.reply_text(empty)
 
 
 @app.on_message(filters.document)
-async def doc(client, message):
+def doc(client, message):
     res = message.reply_text("**Analysing file...**", True)
     mimmetype = message.document.mime_type
     if mimmetype in mmtypes:
@@ -119,7 +119,7 @@ async def doc(client, message):
 
 
 @app.on_callback_query()
-async def data(client, callback_query):
+def data(client, callback_query):
     then = time.time()
     rslt = callback_query.data
     if rslt == "about":
