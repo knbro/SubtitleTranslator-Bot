@@ -190,7 +190,8 @@ def data(client, callback_query):
                     srt_object.content = translation
                 new_sub = open(f"{outfile}","w", encoding="utf-8")
                 new_sub.write(srt.compose(org_sub_list))
-            except Exception:
+            except Exception as e:
+                print(e)
                 tr.edit(err5)
                 counts -= 1
                 update(message.chat.id, counts, "free")
