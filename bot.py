@@ -107,7 +107,7 @@ def doc(client, message):
             update(message.chat.id, 0, "free")
         elif status_bot == "free":
             update(message.chat.id, counts, "waiting")
-            message.reply_chat_action("typing")
+            # message.reply_chat_action("typing")
             res.edit(
                 text="choose the destination language",
                 reply_markup=InlineKeyboardMarkup(langs),
