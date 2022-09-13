@@ -1,5 +1,3 @@
-import urllib.parse
-
 from firebase import firebase
 from creds import cred
 from googletrans import Translator
@@ -165,7 +163,7 @@ def data(client, callback_query):
             process_failed = False
             try:
                 sub = open(subdir, "r")
-                org_sub_list = list(str.parse(sub, "ignore_errors"))
+                org_sub_list = list(srt.parse(sub, "ignore_errors"))
                 src_text_list = []
                 dest_text_list = []
                 i = 0
@@ -188,10 +186,10 @@ def data(client, callback_query):
                 for i in translated_sub_list_list:
                     for j in i:
                         translated_sub_list.append(j)
-                for translation,str_object in zip(translated_sub_list ,org_sub_list):
-                    str_object.content = translation
+                for translation,srt_object in zip(translated_sub_list ,org_sub_list):
+                    srt_object.content = translation
                 new_sub = open(f"{outfile}","w", encoding="utf-8")
-                new_sub.write(str.compose(org_sub_list))
+                new_sub.write(srt.compose(org_sub_list))
             except Exception as e:
                 print(e)
                 tr.edit(e)
