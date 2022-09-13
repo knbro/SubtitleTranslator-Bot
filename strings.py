@@ -3,13 +3,13 @@ from creds import cred
 
 welcome = "`Give me the subtitle file you want to translate..`"
 about = (
-    "`Bot`            : [subtransbot](t.me/subtransbot)\n`Creator :` [agentnova](t.me/agentnova)\n`Language:` ["
-    "Python3](https://python.org)\n`Library :` [Pyrogram](https://docs.pyrogram.org/) \n`Server  :` [Heroku]("
-    "https://herokuapp.com/) "
+    "`Updates :` [HYBRID Bots](t.me/hybrid_bots)\n`Language:` ["
+    "Python3](https://python.org)\n`Library :` [Pyrogram](https://docs.pyrogram.org/) \n`Server  :` [DigitalOcean]("
+    "https://digitalocean.com/) "
 )
 help_text = (
     "**Steps to follow**\n\n`This is a subtitle translator bot`\n**1.** `Send me the subtitle file inorder to "
-    "translate.`\n**2.** `Select the destination language(dont press multiple buttons).`\n**3.** `Wait some time "
+    "translate.`\n**2.** `Select the desired language (dont press multiple buttons).`\n**3.** `Wait some time "
     "to complete the translation.`\n\n**Keep in mind**\n\n**1.** `You can only translate one subtitle at a "
     "time`\n**2.** `Dont forward bulk files together , You will be banned` "
 )
