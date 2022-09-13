@@ -81,7 +81,7 @@ def abouts(client, message):
 def stats(client, message):
     stat = client.send_message(
         chat_id=message.chat.id,
-        reply_to_message_id=message.message_id,
+        reply_to_message_id=message.chat_id,
         text="`Fetching details`",
     )
     txt = logreturn()
