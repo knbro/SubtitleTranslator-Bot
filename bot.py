@@ -168,10 +168,10 @@ def data(client, callback_query):
         )
     elif rslt == "trcancel":
         canc = client.send_message(
-        chat_id=message.chat.id,
-        reply_to_message_id=message.id,
-        text="`Changing status...`",
-        )
+            chat_id=message.chat.id,
+            reply_to_message_id=message.id,
+            text="`Changing status...`",
+            )
         check_udate = dt(message.chat.id)
         if check_udate is None:
             update(message.chat.id, 0, "free")
