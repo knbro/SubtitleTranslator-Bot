@@ -82,6 +82,16 @@ def abouts(client, message):
         ),
     )
 
+@app.on_message(filters.command(["help"]))
+def helps(client, message):
+    client.send_message(
+        chat_id=message.chat.id,
+        reply_to_message_id=message.id,
+        text=help_text,
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("Updates Channel", url="t.me/HYBRID_Bots")]]
+        ),
+    )
 
 @app.on_message(filters.command(["cancel"]))
 def cancel(client, message):
