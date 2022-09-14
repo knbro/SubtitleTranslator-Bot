@@ -136,9 +136,11 @@ def doc(client, message):
             )
         else:
             res.edit(
-                text=err1,
-                reply_markup=InlineKeyboardMarkup(trcancelkey)
-            )
+            text=err1,
+            reply_markup=InlineKeyboardMarkup(
+                [[InlineKeyboardButton("Cancel ongoing process", callback_data="trcancel")]]
+            ),
+        )
     else:
         res.edit(err2)
 
