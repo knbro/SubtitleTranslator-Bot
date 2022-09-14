@@ -1,7 +1,7 @@
 from pyrogram.types import InlineKeyboardButton
 from creds import cred
 
-welcome = "`Give me the subtitle file you want to translate..`"
+welcome = "I'm **Subtitles Translate Bot** \n`Just send me the subtitle file you want to translate.`"
 about = (
     "`Updates :` [HYBRID Bots](t.me/hybrid_bots)\n`Language:` ["
     "Python3](https://python.org)\n`Library :` [Pyrogram](https://docs.pyrogram.org/) \n`Server  :` [DigitalOcean]("
@@ -26,6 +26,7 @@ mmtypes = [
     "application/binary",
 ]
 cancel_text = "`Status updated. You can now send new file`"
+trcancel_text = "`Process cancelled by user.."
 err1 = "**__One subtitle is processing wait sometime__**"
 err2 = "**__This is not a subtitle(srt) file__**"
 err3 = "**Todays limit exceeded**"
@@ -62,5 +63,8 @@ langs = [
         InlineKeyboardButton("עִברִית", callback_data="hebrew"),
         InlineKeyboardButton("العربية", callback_data="arabic"),
         InlineKeyboardButton("සිංහල",callback_data="sinhala"),
+    ],
+    [
+        InlineKeyboardButton("Cancel" callback_data="trcancel")
     ],
 ]

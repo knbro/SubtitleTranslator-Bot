@@ -20,6 +20,7 @@ from strings import (
     welcome,
     caption,
     cancel_text,
+    trcancel_text,
     mmtypes,
     about,
     langs,
@@ -95,6 +96,18 @@ def cancel(client, message):
         update(message.chat.id, 0, "free")
     canc.edit(cancel_text)
 
+def trcancel(client, message):
+    canc = client.send_message(
+        chat_id=message.chat.id,
+        reply_to_message_id=message.id,
+        text="`Changing status...`",
+    )
+    check_udate = dt(message.chat.id)
+    if check_udate is None:
+        update(message.chat.id, 0, "free")
+    if not today_date == "waiting":
+        update(message.chat.id, 0, "free")
+    canc.edit(trcancel_text)
 
 """@app.on_message(filters.command(["log"]))
 def stats(client, message):
