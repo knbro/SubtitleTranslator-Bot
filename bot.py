@@ -168,7 +168,7 @@ def data(client, callback_query):
         )
     elif rslt == "trcancel":
         canc = client.send_message(
-            chat_id=message.chat.id,
+            #chat_id=message.chat.id,
             reply_to_message_id=message.id,
             text="`Changing status...`",
             )
