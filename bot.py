@@ -93,7 +93,7 @@ def cancel(client, message):
         update(message.chat.id, 0, "free")
     if not today_date == "waiting":
         update(message.chat.id, 0, "free")
-    canc.edit(cancel)
+    canc.edit(cancel_text)
 
 
 """@app.on_message(filters.command(["log"]))

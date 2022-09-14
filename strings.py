@@ -25,7 +25,7 @@ mmtypes = [
     "application/octet-stream",
     "application/binary",
 ]
-cancel = "`Status updated. You can now send new file`"
+cancel_text = "`Status updated. You can now send new file`"
 err1 = "**__One subtitle is processing wait sometime__**"
 err2 = "**__This is not a subtitle(srt) file__**"
 err3 = "**Todays limit exceeded**"
