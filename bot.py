@@ -131,16 +131,11 @@ def doc(client, message):
             update(message.chat.id, counts, "waiting")
             # message.reply_chat_action("typing")
             res.edit(
-                text="choose the destination language",
+                text="choose the desired language",
                 reply_markup=InlineKeyboardMarkup(langs) 
             )
         else:
-            res.edit(
-            text=err1,
-            reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton("Cancel ongoing process", callback_data="trcancel")]]
-            ),
-        )
+            res.edit(err1)
     else:
         res.edit(err2)
 
@@ -154,7 +149,12 @@ def data(client, callback_query):
             text=about,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton("Updates Channel", url="t.me/HYBRID_Bots")]]
+                [
+                    [
+                        InlineKeyboardButton("Updates Channel", url="t.me/HYBRID_Bots"),
+                        InlineKeyboardButton("Back", callback_data="start"),
+                    ]
+                ]
             ),
         )
     elif rslt == "close":
@@ -163,21 +163,26 @@ def data(client, callback_query):
         callback_query.message.edit(
             text=help_text,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton("close", callback_data="close")]]
+                [
+                    [
+                        InlineKeyboardButton("close", callback_data="close"),
+                        InlineKeyboardButton("Back", callback_data="start"),
+                    ]
+                ]
             ),
         )
-    elif rslt == "trcancel":
-        canc = client.send_message(
-            #chat_id=message.chat.id,
-            reply_to_message_id=message.id,
-            text="`Changing status...`",
-            )
-        check_udate = dt(message.chat.id)
-        if check_udate is None:
-            update(message.chat.id, 0, "free")
-        if not today_date == "waiting":
-            update(message.chat.id, 0, "free")
-        canc.edit(trcancel_text)
+    elif rslt == "start":
+        callback_query.message.edit(
+            text=welcome,
+            reply_markup=InlineKeyboardMarkup(
+                [
+                    [
+                        InlineKeyboardButton("About", callback_data="about"),
+                        InlineKeyboardButton("Help", callback_data="help"),
+                    ]
+                ]
+            ),
+        )
     else:
         lang = rslt
         msg = callback_query.message

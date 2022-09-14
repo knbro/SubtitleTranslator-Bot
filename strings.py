@@ -31,7 +31,7 @@ trcancelkey = [
     InlineKeyboardButton("Cancel ongoing process", callback_data="trcancel")
 ]
 
-err1 = "**__One subtitle is processing wait sometime__**"
+err1 = "**__One subtitle is processing wait sometime__ \n\n Send /cancel to cancel ongoing process. **"
 err2 = "**__This is not a subtitle(srt) file__**"
 err3 = "**Todays limit exceeded**"
 err4 = "**Unsupported characters in file**"
