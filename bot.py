@@ -81,6 +81,21 @@ def abouts(client, message):
     )
 
 
+@app.on_message(filters.command(["cancel"]))
+def cancel(client, message):
+    canc = client.send_message(
+        chat_id=message.chat.id,
+        reply_to_message_id=message.id,
+        text="`Changing status...`",
+    )
+    check_udate = dt(message.chat.id)
+    if check_udate is None:
+        update(message.chat.id, 0, "free")
+    if not today_date == "waiting":
+        update(message.chat.id, 0, "free")
+    canc.edit(cancel)
+
+
 """@app.on_message(filters.command(["log"]))
 def stats(client, message):
     stat = client.send_message(
@@ -96,22 +111,7 @@ def stats(client, message):
 def texts(client, message):
     message.reply_text(empty)
 
-
-@app.on_message(filters.command(["cancel"]))
-def cancel(client, message):
-    canc = client.send_message(
-        chat_id=message.chat.id,
-        reply_to_message_id=message.id,
-        text="`Changing status...`",
-    )
-    check_udate = dt(message.chat.id)
-    if check_udate is None:
-        update(message.chat.id, 0, "free")
-    if not today_date == "waiting":
-        update(message.chat.id, 0, "free")
-    canc.edit(cancel)
     
-
 
 @app.on_message(filters.document)
 def doc(client, message):
