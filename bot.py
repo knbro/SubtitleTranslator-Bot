@@ -21,6 +21,7 @@ from strings import (
     caption,
     cancel_text,
     trcancel_text,
+    trcancelkey,
     mmtypes,
     about,
     langs,
