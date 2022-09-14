@@ -96,18 +96,6 @@ def cancel(client, message):
         update(message.chat.id, 0, "free")
     canc.edit(cancel_text)
 
-def trcancel(client, message):
-    canc = client.send_message(
-        chat_id=message.chat.id,
-        reply_to_message_id=message.id,
-        text="`Changing status...`",
-    )
-    check_udate = dt(message.chat.id)
-    if check_udate is None:
-        update(message.chat.id, 0, "free")
-    if not today_date == "waiting":
-        update(message.chat.id, 0, "free")
-    canc.edit(trcancel_text)
 
 """@app.on_message(filters.command(["log"]))
 def stats(client, message):
@@ -143,7 +131,12 @@ def doc(client, message):
             # message.reply_chat_action("typing")
             res.edit(
                 text="choose the destination language",
-                reply_markup=InlineKeyboardMarkup(langs),
+                reply_markup=InlineKeyboardMarkup(
+                    langs,
+                    [
+                        InlineKeyboardButton("Cancel", callback_data="trcancel")
+                    ]
+                    ) 
             )
         else:
             res.edit(err1)
@@ -172,6 +165,18 @@ def data(client, callback_query):
                 [[InlineKeyboardButton("close", callback_data="close")]]
             ),
         )
+    elif rslt == "trcancel":
+        canc = client.send_message(
+        chat_id=message.chat.id,
+        reply_to_message_id=message.id,
+        text="`Changing status...`",
+        )
+        check_udate = dt(message.chat.id)
+        if check_udate is None:
+            update(message.chat.id, 0, "free")
+        if not today_date == "waiting":
+            update(message.chat.id, 0, "free")
+        canc.edit(trcancel_text)
     else:
         lang = rslt
         msg = callback_query.message
