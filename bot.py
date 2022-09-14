@@ -164,7 +164,6 @@ def data(client, callback_query):
             update(message.chat.id, counts, "waiting")
             process_failed = False
             try:
-                srt = outfile
                 sub = open(subdir, "r")
                 org_sub_list = list(srt.parse(sub, "ignore_errors"))
                 src_text_list = []
