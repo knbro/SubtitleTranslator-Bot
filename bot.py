@@ -133,9 +133,7 @@ def doc(client, message):
                 text="choose the destination language",
                 reply_markup=InlineKeyboardMarkup(
                     langs,
-                    [
-                        InlineKeyboardButton("Cancel", callback_data="trcancel")
-                    ]
+                    trcancelkey
                     ) 
             )
         else:

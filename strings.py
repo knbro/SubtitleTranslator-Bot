@@ -27,6 +27,9 @@ mmtypes = [
 ]
 cancel_text = "`Status updated. You can now send new file`"
 trcancel_text = "`Process cancelled by user.."
+trcancelkey = [
+    InlineKeyboardButton("Cancel", callback_data="trcancel")
+]
 err1 = "**__One subtitle is processing wait sometime__**"
 err2 = "**__This is not a subtitle(srt) file__**"
 err3 = "**Todays limit exceeded**"
