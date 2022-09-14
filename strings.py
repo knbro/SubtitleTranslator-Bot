@@ -65,6 +65,6 @@ langs = [
         InlineKeyboardButton("සිංහල",callback_data="sinhala"),
     ],
     [
-        InlineKeyboardButton("Cancel" callback_data="trcancel")
-    ],
+        InlineKeyboardButton("Cancel", callback_data="trcancel")
+    ]
 ]
