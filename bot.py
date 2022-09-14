@@ -58,8 +58,9 @@ def start(client, message):
                     InlineKeyboardButton("Help", callback_data="help"),
                 ],
                 [
-                    InlineKeyboardButton("Updates Channel", url="t.me/HYBRID_Bots")
-                ]
+                    InlineKeyboardButton("Updates Channel", url="t.me/HYBRID_Bots"),
+                    InlineKeyboardButton("Support", url="t.me/hybrid_chat"),
+                ],
             ]
         ),
     )
@@ -78,7 +79,12 @@ def abouts(client, message):
         text=about,
         disable_web_page_preview=True,
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("Updates Channel", url="t.me/HYBRID_Bots")]]
+            [
+                [
+                    InlineKeyboardButton("Updates Channel", url="t.me/HYBRID_Bots"),
+                    InlineKeyboardButton("Support", url="t.me/hybrid_chat"),
+                ]
+            ]
         ),
     )
 
@@ -89,7 +95,12 @@ def helps(client, message):
         reply_to_message_id=message.id,
         text=help_text,
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("Updates Channel", url="t.me/HYBRID_Bots")]]
+            [
+                [
+                    InlineKeyboardButton("Updates Channel", url="t.me/HYBRID_Bots"),
+                    InlineKeyboardButton("Support", url="t.me/hybrid_chat"),
+                ]
+            ]
         ),
     )
 
