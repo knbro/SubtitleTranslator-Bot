@@ -1,5 +1,3 @@
-import urllib.parse
-
 from firebase import firebase
 from creds import cred
 from googletrans import Translator
