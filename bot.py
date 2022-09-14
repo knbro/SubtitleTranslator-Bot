@@ -132,13 +132,13 @@ def doc(client, message):
             # message.reply_chat_action("typing")
             res.edit(
                 text="choose the destination language",
-                reply_markup=InlineKeyboardMarkup([
-                    langs,
-                    trcancelkey
-                ]) 
+                reply_markup=InlineKeyboardMarkup(langs) 
             )
         else:
-            res.edit(err1)
+            res.edit(
+                text=err1,
+                reply_markup=InlineKeyboardMarkup(trcancelkey)
+            )
     else:
         res.edit(err2)
 
