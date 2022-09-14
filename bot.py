@@ -19,7 +19,7 @@ from strings import (
     help_text,
     welcome,
     caption,
-    cancel,
+    cancel_text,
     mmtypes,
     about,
     langs,
