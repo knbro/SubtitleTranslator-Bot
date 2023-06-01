@@ -80,7 +80,6 @@ def insertlog():
         lst1.append("u")
         if v["date"] == today_date:
             act.append("d")
-    total_files = f"{files['files']}"
     total_users = f"{lst1.count('u')}"
     active_today = f"{act.count('d')}"
 
